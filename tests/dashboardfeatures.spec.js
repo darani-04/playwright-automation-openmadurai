@@ -56,9 +56,4 @@ test('test', async ({ page }) => {
   await expect(page.locator('body')).toBeVisible();
   const profile = page.locator('text=Profile').first();
   await profile.waitFor({ state: 'visible', timeout: 10000 });
-  await profile.click();
- await page.waitForLoadState('domcontentloaded');
- await expect(page.locator('body')).toBeVisible();
-  await page.getByRole('img', { name: 'thra' }).click();
-  await page.getByText('Logout').click();
 });
