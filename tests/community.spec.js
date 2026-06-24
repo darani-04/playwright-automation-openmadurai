@@ -3,8 +3,9 @@ import { test, expect } from '@playwright/test';
 test('test', async ({ page }) => {
   await page.goto('https://openmadurai.org/');
   await page.waitForLoadState('load');
-  await page.waitForTimeout(5000);
-  await page.getByRole('navigation').getByRole('link', { name: 'Community' }).click();
+  const communityLink = page.getByRole('navigation').getByRole('link', { name: 'Community' });
+  await expect(communityLink).toBeVisible();
+  await communityLink.click();
   await page.waitForLoadState('domcontentloaded');
   await page.getByRole('button', { name: 'View Details' }).first().click();
   await page.waitForLoadState('domcontentloaded');

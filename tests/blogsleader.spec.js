@@ -11,12 +11,12 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Jun' }).click();
   await page.getByRole('button', { name: 'May' }).click();
   await page.waitForLoadState('domcontentloaded');
-  await page.getByText('Read Article').click();
+ await page.getByText('Read Article').click();
   await page.goto('https://openmadurai.org/blogs');
   await page.getByRole('button', { name: 'Apr' }).click();
   await page.getByRole('button', { name: 'Mar' }).click();
   await page.waitForLoadState('domcontentloaded');
-  await page.getByText('Read Article');
+  await page.getByText('Read Article').click();
   await page.waitForLoadState('networkidle');
   await page.goto('https://openmadurai.org/blogs');
   await page.getByRole('button', { name: 'Feb' }).click();
@@ -25,6 +25,7 @@ test('test', async ({ page }) => {
   await page.getByText('Read Article').click();
   await page.goto('https://openmadurai.org/blogs');
   await page.waitForLoadState('domcontentloaded');
+  await expect(page.locator('body')).toBeVisible()
   await page.getByRole('button', { name: 'Dec' }).click();
   await page.waitForLoadState('domcontentloaded');
   await page.getByRole('link', { name: 'Leaderboard' }).click();
