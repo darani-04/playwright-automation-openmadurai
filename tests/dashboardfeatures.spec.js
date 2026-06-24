@@ -1,0 +1,65 @@
+import { test, expect } from '@playwright/test';
+test.setTimeout(180000);
+
+test('test', async ({ page }) => {
+  await page.goto('https://openmadurai.org/');
+  await page.getByRole('link', { name: 'Log in' }).click();
+  await page.getByRole('textbox', { name: '············' }).click();
+  await page.getByRole('textbox', { name: 'Enter your email' }).fill('thara@gmail.com');
+  await page.getByRole('textbox', { name: '············' }).click();
+  await page.getByRole('textbox', { name: '············' }).fill('thara@04');
+  await page.getByRole('button', { name: 'Login' }).click();
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(3000);
+  await page.locator('a').filter({ hasText: /^Opportunities$/ }).click();
+  await page.waitForLoadState('load');
+  await page.waitForTimeout(5000);
+  await page.getByRole('link', { name: 'Post Opportunities' }).click();
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(3000);
+  await page.locator('a').filter({ hasText: /^Events$/ }).click();
+  await page.waitForLoadState('load');
+  await page.waitForTimeout(5000);
+  await page.getByRole('link', { name: 'My Events' }).click();
+  await page.waitForLoadState('load');
+  await page.waitForTimeout(5000);
+  await page.getByRole('img', { name: 'Deploying Open Models on GKE' }).click();
+  await page.getByRole('button').click();
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(3000);
+  await page.locator('a').filter({ hasText: /^Projects$/ }).click();
+  await page.waitForLoadState('load');
+  await page.waitForTimeout(5000);
+  await page.getByRole('link', { name: 'My Projects' }).click();
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(3000);
+  await page.locator('a').filter({ hasText: /^Tools$/ }).click();
+  await page.waitForLoadState('load');
+  await page.waitForTimeout(5000);
+  await page.getByRole('link', { name: 'My Tools' }).click();
+  await page.waitForLoadState('load');
+  await page.waitForTimeout(5000);
+  await page.locator('a').filter({ hasText: /^Datasets$/ }).click();
+  await page.waitForLoadState('load');
+  await page.waitForTimeout(5000);
+  await page.getByRole('link', { name: 'My Datasets' }).waitFor({
+  timeout: 30000
+});
+
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(3000);
+  await page.locator('a').filter({ hasText: 'Research Papers' }).click();
+  await page.waitForLoadState('load');
+  await page.waitForTimeout(5000);
+  await page.getByRole('link', { name: 'My Papers' }).click();
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(3000);
+  await page.locator('a').filter({ hasText: 'Settings' }).click();
+  await page.waitForLoadState('load');
+  await page.waitForTimeout(5000);
+  await page.getByRole('link', { name: 'Profile' }).click();
+  await page.waitForLoadState('load');
+  await page.waitForTimeout(5000);
+  await page.getByRole('img', { name: 'thra' }).click();
+  await page.getByText('Logout').click();
+});
