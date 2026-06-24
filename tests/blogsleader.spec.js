@@ -16,7 +16,8 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Apr' }).click();
   await page.getByRole('button', { name: 'Mar' }).click();
   await page.waitForLoadState('domcontentloaded');
-  await page.getByText('Read Article').
+  await page.getByText('Read Article');
+  await page.waitForLoadState('networkidle');
   await page.goto('https://openmadurai.org/blogs');
   await page.getByRole('button', { name: 'Feb' }).click();
   await page.getByRole('button', { name: 'Jan' }).click();
