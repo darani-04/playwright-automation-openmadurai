@@ -1,10 +1,10 @@
 {
   "name": "automation-testing",
   "version": "1.0.0",
-  "description": "",
+  "description": "Playwright automation testing framework",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test"
+    "test": "playwright test"
   },
   "keywords": [],
   "author": "",
