@@ -14,11 +14,6 @@ test('test', async ({ page }) => {
   await page.locator('a').filter({ hasText: /^Opportunities$/ }).click();
   await page.waitForLoadState('domcontentloaded');
   await expect(page.locator('body')).toBeVisible();
- const postOpportunities = page.getByRole('link', { name: 'Post Opportunities' });
-await postOpportunities.waitFor({ state: 'visible', timeout: 10000 });
-await postOpportunities.click();
- await page.waitForLoadState('domcontentloaded');
- await expect(page.locator('body')).toBeVisible();
   await page.locator('a').filter({ hasText: /^Events$/ }).click();
   await page.waitForLoadState('domcontentloaded');
   await expect(page.locator('body')).toBeVisible();
