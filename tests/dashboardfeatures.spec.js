@@ -59,7 +59,7 @@ await postOpportunities.click();
   await page.locator('a').filter({ hasText: 'Settings' }).click();
   await page.waitForLoadState('domcontentloaded');
   await expect(page.locator('body')).toBeVisible();
-  await page.getByRole('link', { name: 'Profile' }).click();
+  await page.getByText('Profile', { exact: false }).first().click();
  await page.waitForLoadState('domcontentloaded');
  await expect(page.locator('body')).toBeVisible();
   await page.getByRole('img', { name: 'thra' }).click();
