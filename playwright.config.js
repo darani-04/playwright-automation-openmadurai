@@ -36,13 +36,13 @@ module.exports = defineConfig({
     actionTimeout: 10000,
     navigationTimeout: 15000,
 
-    // ✅ CRITICAL: Screenshot on failure only
+    // Screenshot on failure only
     screenshot: 'only-on-failure',
     
-    // ❌ Videos disabled (faster)
+    // Disable videos for faster execution
     video: 'off',
     
-    // ❌ Traces disabled (faster)
+    // Disable traces for faster execution
     trace: 'off',
 
     // Test isolation
