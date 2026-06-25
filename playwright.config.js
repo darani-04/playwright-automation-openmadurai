@@ -1,14 +1,31 @@
-module.exports = {
-  reporter: 'html',
+// @ts-check
+const { defineConfig, devices } = require('@playwright/test');
 
-  retries: 2,
+module.exports = defineConfig({
+  timeout: 30000,
+  retries: process.env.CI ? 2 : 0,  // ✅ Only ONE retries property
+  fullyParallel: true,
+  forbidOnly: !!process.env.CI,
+  workers: process.env.CI ? 1 : undefined,
+
+  reporter: [
+    ['html', { outputFolder: 'playwright-report' }],
+    ['list']
+  ],
 
   use: {
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
     actionTimeout: 30000,
     navigationTimeout: 60000,
-
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
-    trace: 'retain-on-failure'
+    video: 'off',
+    trace: 'off',
   },
-};
+
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+  ],
+});
