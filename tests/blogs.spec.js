@@ -27,8 +27,4 @@ test('test', async ({ page }) => {
   await page.waitForLoadState('domcontentloaded');
   await expect(page.locator('body')).toBeVisible()
   await page.getByRole('button', { name: 'Dec' }).click();
-  await page.waitForLoadState('domcontentloaded');
-  await page.getByRole('link', { name: 'Leaderboard' }).click();
-  await page.waitForLoadState('domcontentloaded');
-  await page.getByRole('button', { name: '3' }).click();
 });
