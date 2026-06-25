@@ -2,30 +2,59 @@ name: Playwright Tests
 
 on:
   workflow_dispatch:
+    branches:
+      - main
+
+# Minimum required permissions
+permissions:
+  contents: read
+  actions: read
+  checks: read
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 10
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
 
       - name: Install Dependencies
         run: npm ci
 
+      - name: Cache Playwright Browsers
+        id: playwright-cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
       - name: Install Playwright Browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps chromium
 
+      - name: Create Test Results Directory
+        run: mkdir -p test-results
+
       - name: Run Playwright Tests
+        id: test
         run: npx playwright test
         continue-on-error: true
+        env:
+          CI: true
 
+      # ✅ Upload complete report with screenshots
       - name: Upload Playwright Report
         if: always()
         uses: actions/upload-artifact@v4
@@ -34,10 +63,26 @@ jobs:
           path: |
             playwright-report/
             test-results/
+          retention-days: 7
+          if-no-files-found: warn
+          compression-level: 6
 
-      - name: Upload Test Screenshots
+      # ✅ Upload screenshots separately for easy access
+      - name: Upload Screenshots
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: test-screenshots
           path: test-results/**/*.png
+          retention-days: 7
+          if-no-files-found: warn
+          compression-level: 6
+
+      # ✅ Debug: Show what was captured
+      - name: Debug Test Results
+        if: always()
+        run: |
+          echo "=== Test Results Directory ==="
+          find test-results -type f 2>/dev/null | head -20 || echo "No test-results found"
+          echo "=== Playwright Report Directory ==="
+          find playwright-report -type f 2>/dev/null | head -20 || echo "No playwright-report found"
