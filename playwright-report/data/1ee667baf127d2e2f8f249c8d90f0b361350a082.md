@@ -18,48 +18,6 @@ Call log:
 
 ```
 
-# Page snapshot
-
-```yaml
-- generic [ref=e2]:
-  - generic [ref=e4]:
-    - complementary [ref=e5]:
-      - generic [ref=e7]:
-        - generic [ref=e8]:
-          - link "OpenMadurai Logo OpenMadurAI" [ref=e9] [cursor=pointer]:
-            - /url: /
-            - generic [ref=e10]:
-              - img "OpenMadurai Logo" [ref=e11]
-              - generic [ref=e12]: OpenMadurAI
-          - button [ref=e13] [cursor=pointer]
-        - navigation [ref=e17]:
-          - list [ref=e18]
-    - generic [ref=e32]:
-      - banner:
-        - generic [ref=e35]:
-          - button "Scan Event QR Code" [ref=e36] [cursor=pointer]:
-            - img [ref=e37]
-          - img "thra" [ref=e45] [cursor=pointer]
-      - main [ref=e48]:
-        - generic [ref=e53]:
-          - img "Congratulations thra" [ref=e55]
-          - generic [ref=e56]:
-            - heading "Welcome back thra! 🎉" [level=5] [ref=e57]
-            - paragraph [ref=e58]: Explore new community projects and showcase your work today.
-            - paragraph [ref=e59]: Connect with developers and contributors from your community.
-            - link "Explore Community" [ref=e60] [cursor=pointer]:
-              - /url: /community
-              - button "Explore Community" [ref=e61]
-      - contentinfo [ref=e74]:
-        - paragraph [ref=e77]:
-          - text: © 2026, Made with ❤️ by
-          - link "Savemom" [ref=e78] [cursor=pointer]:
-            - /url: https://savemom.in/
-          - text: (v2)
-  - generic:
-    - region "Notifications Alt+T"
-```
-
 # Test source
 
 ```ts
