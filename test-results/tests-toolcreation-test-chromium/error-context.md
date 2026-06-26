@@ -74,22 +74,22 @@ Call log:
               - generic [ref=e117]:
                 - paragraph [ref=e118]: Total Score
                 - paragraph [ref=e119]: Overall community score
-              - heading "64" [level=2] [ref=e120]
+              - heading "79" [level=2] [ref=e120]
             - generic [ref=e123]:
               - generic [ref=e126]:
                 - paragraph [ref=e127]: Projects
                 - paragraph [ref=e128]: Total projects
-              - heading "1" [level=2] [ref=e129]
+              - heading "2" [level=2] [ref=e129]
             - generic [ref=e132]:
               - generic [ref=e135]:
                 - paragraph [ref=e136]: Quick Tools
                 - paragraph [ref=e137]: Total quick tools
-              - heading "1" [level=2] [ref=e138]
+              - heading "2" [level=2] [ref=e138]
             - generic [ref=e141]:
               - generic [ref=e144]:
                 - paragraph [ref=e145]: Datasets
                 - paragraph [ref=e146]: Total datasets
-              - heading "1" [level=2] [ref=e147]
+              - heading "2" [level=2] [ref=e147]
             - generic [ref=e150]:
               - generic [ref=e153]:
                 - paragraph [ref=e154]: Research Papers
@@ -118,10 +118,10 @@ Call log:
                     - generic [ref=e197]: 2026-06
                     - generic [ref=e198]:
                       - generic [ref=e200]: "0"
-                      - generic [ref=e202]: "0.25"
-                      - generic [ref=e204]: "0.5"
-                      - generic [ref=e206]: "0.75"
-                      - generic [ref=e208]: "1"
+                      - generic [ref=e202]: "0.5"
+                      - generic [ref=e204]: "1"
+                      - generic [ref=e206]: "1.5"
+                      - generic [ref=e208]: "2"
         - contentinfo [ref=e209]:
           - paragraph [ref=e212]:
             - text: © 2026, Made with ❤️ by
